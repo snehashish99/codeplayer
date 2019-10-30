@@ -19,7 +19,6 @@
         <div id="buttonContainer">
             <div class="toggleButton active" id="html">HTML</div>
             <div class="toggleButton" id="css">CSS</div>
-            <div class="toggleButton" id="javascript">JS</div>
             <div class="toggleButton active" id="output">OUTPUT</div>
         </div>
         <!--<div id="dark" class="darkMode">dark mode</div>-->
@@ -27,7 +26,6 @@
     <div id="bodyContainer">
         <textarea id="htmlPanel" class="panel"><p>Hello world</p></textarea>
         <textarea id="cssPanel" class="panel hidden">p{color:green}</textarea>
-        <textarea id="javascriptPanel" class="panel hidden"></textarea>
         <iframe id="outputPanel" class="panel"></iframe>
     </div>
 
@@ -36,7 +34,6 @@
         function updateOutput(){
             $("iframe").contents().find("html").html("<html><head><style type='text/css'>"+
             $("#cssPanel").val()+"</style></head><body>"+$("#htmlPanel").val()+"</body></html>");
-            document.getElementById("#outputPanel").contentWindow.eval($("#javascriptPanel").val());
             
         }
         
@@ -50,7 +47,7 @@
             $(this).removeClass("highlightedButton");
             var panelId=$(this).attr("id")+"Panel";
             $("#"+panelId).toggleClass("hidden");
-            var activePanel=4-$(".hidden").length;
+            var activePanel=3-$(".hidden").length;
             $(".panel").width(($(window).width()/activePanel)-15);
         });
         $(".panel").height($(window).height()-$("#header").height());
@@ -60,7 +57,7 @@
         });
         $("iframe").contents().find("html").html("<html><head><style type='text/css'>"+
         $("#cssPanel").val()+"</style></head><body>"+$("#htmlPanel").val()+"</body></html>");
-        eval($("#javascriptPanel").val());
+        
     </script>
 </body>
 
