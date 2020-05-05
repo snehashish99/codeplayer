@@ -1,7 +1,12 @@
 body{
-    background-color: #837a91;
+    background-color: #3F4250;
 }
-
+.header{
+    background-color: lightslategray;
+    height: 50px;
+    font-size: x-large;
+    padding: 8px 0px 0px 40px;
+}
 .writingPanel{
     padding: 2px;
     height: 250px;
