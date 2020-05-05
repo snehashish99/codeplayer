@@ -1,72 +1,40 @@
 body{
-    padding: 0;
-    margin: 0;
-    font-family: sans-serif;
+    background-color: #837a91;
 }
 
-#header{
+.writingPanel{
+    padding: 2px;
+    height: 250px;
     width: 100%;
-    height: 30px;
-    background-color: darkgrey;
-    padding: 6px;
+    margin:0px 2px 0px 1px;
+}
+.pad{
+    padding: 2px;
+    width: 100%;
+    height: 90%;
+    resize: none;
+    background-color: #645e6e;
+    color: #e4e1e8;
+}
+.main{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
 }
 
-.darkMode{
-    border: 2px solid black;
-    padding: 5px;
-    border-radius: 5px;
-    float: right;
-    margin-right: 50px;
+@media only screen and (max-width: 600px) {
+    .main{
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+    .panel{
+        padding: 2px;
+        height: 200px;
+        width: 100%;
+        margin: 10px 0px 10px 0px;
+    }
 }
-
-#logo{
-    float: left;
-    font-weight: bold;
-    font-size: 120%;
-    padding: 3px;
-}
-
-#buttonContainer{
-    width: 295px;
-    margin: 0 auto;
-}
-
-.active{
-    background-color: lightblue;
-}
-
-.highlightedButton{
-    background-color: grey;
-}
-
-.toggleButton{
-    float:left;
-    border: 2px solid green;
-    padding: 0.3rem;
-    border-radius: 5px;
-}
-
-#htmlPanel{
-    border-top: none;
-}
-
-iframe{
-    border: 2px solid black;
-    padding: 1px;
-}
-
-textarea{
-    width: 50%;
-    border-right: none;
-}
-
-.panel{
-    width: 50%;
-}
-
-.hidden{
-    display: none;
-}
-
-
 

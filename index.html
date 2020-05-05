@@ -6,59 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Codeplayer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="jquery-ui-1.12.1/jquery-ui.js"></script>
-    <link href="jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/index.css">
-    
 </head>
 
-<body>
-    <div id="header">
-        <div id="logo">Code Player</div>
-        <div id="buttonContainer">
-            <div class="toggleButton active" id="html">HTML</div>
-            <div class="toggleButton" id="css">CSS</div>
-            <div class="toggleButton active" id="output">OUTPUT</div>
+<body>   
+    <div id="root">
+        <div class="main">
+            <div class="writingPanel"><span>HTML</span><textarea class="pad" id="htmlPanel"><h1>Hello world</h1></textarea></div>
+            <div class="writingPanel"><span>CSS</span><textarea class="pad" id="cssPanel">h1{color:green}body{background-color:#bcd6e0;}</textarea></div>
+            <div class="writingPanel"><span>JS</span><textarea class="pad" id="jsPanel">//Enter JS here...</textarea></div>         
         </div>
-        <!--<div id="dark" class="darkMode">dark mode</div>-->
+        <br><br>
+        <iframe style="background-color: white; resize: both;" height="250px" width="70%" id="iframePanel"></iframe>
+        <input class="btn" type="button" onclick="setiframe()" value="Run">
     </div>
-    <div id="bodyContainer">
-        <textarea id="htmlPanel" class="panel"><p>Hello world</p></textarea>
-        <textarea id="cssPanel" class="panel hidden">p{color:green}</textarea>
-        <iframe id="outputPanel" class="panel"></iframe>
-    </div>
-
-    <script type="text/javascript">
-
-        function updateOutput(){
-            $("iframe").contents().find("html").html("<html><head><style type='text/css'>"+
-            $("#cssPanel").val()+"</style></head><body>"+$("#htmlPanel").val()+"</body></html>");
-            
+    <script>
+        setiframe()
+        function setiframe(){
+            //console.log($('#jsPanel').val())
+            //console.log($('#cssPanel').val())
+            htmlContent=$('#htmlPanel').val()
+            cssContent=$('#cssPanel').val()
+            jsContent=$('#jsPanel').val()
+            var myFrame = $("#iframePanel").contents().find('body');
+            content='<html>'+'<style>'+cssContent+'</style>'+'<body>'+htmlContent+'<script>'+jsContent+'<\/script>'+'<\/body>'+'</html>'
+            myFrame.html(content);
         }
-        
-        $(".toggleButton").hover(function(){
-            $(this).addClass("highlightedButton");
-        },function(){
-            $(this).removeClass("highlightedButton");
-        });
-        $(".toggleButton").click(function(){
-            $(this).toggleClass("active");
-            $(this).removeClass("highlightedButton");
-            var panelId=$(this).attr("id")+"Panel";
-            $("#"+panelId).toggleClass("hidden");
-            var activePanel=3-$(".hidden").length;
-            $(".panel").width(($(window).width()/activePanel)-15);
-        });
-        $(".panel").height($(window).height()-$("#header").height());
-        $(".panel").width($(window).width()/2-15);
-        $("textarea").on('change keyup paste', function() {
-            updateOutput();
-        });
-        $("iframe").contents().find("html").html("<html><head><style type='text/css'>"+
-        $("#cssPanel").val()+"</style></head><body>"+$("#htmlPanel").val()+"</body></html>");
-        
     </script>
 </body>
-
 </html>
